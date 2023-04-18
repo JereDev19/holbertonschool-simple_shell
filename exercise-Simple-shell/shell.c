@@ -5,6 +5,8 @@ int main(void)
 	ssize_t chars_read = 0;
 	size_t sizeBuffer = 0;
 	char *bufferEntry = NULL;
+	char *comandPath = NULL;
+	int status = 0;
 
 	bufferEntry = malloc(sizeof(char *) * sizeBuffer);
 	if (!bufferEntry)
@@ -14,16 +16,22 @@ int main(void)
 	{
 		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
 		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
-		if (!chars_read)
-		{
-			free(bufferEntry);
-			return (1);
-		}
-		else if (chars_read == -1)
-		{
-			free(bufferEntry);
-			printf("Existing for the shell\n");
-			return (0);
-		}
+
+		/* -- Verify if the command is exit or the user place exit --*/
+		if (chars_read == -1 || strcmp(bufferEntry, "exit\n") == 0)
+			((bufferEntry) ? free(bufferEntry), exit(status) : 0);
+
+		/*path copy so not modify the original buffer*/
+		comandPath = strdup(bufferEntry);
+
+		/**
+		 * Pasos generales: (nos vamos a encontrar 30 mil error en el medio)
+		 *
+		 * Step 1:
+		 *  - Hacer funcion que devuelva un array con los parametros dados (en cada indice un determinado parametro o argumento).
+		 *
+		 * Step 2:
+		 *  - Buscar el path de ese argumento que obtuvimos y ejecutar el comando.
+		 */
 	}
 }
