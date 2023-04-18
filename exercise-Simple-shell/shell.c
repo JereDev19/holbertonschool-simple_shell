@@ -21,6 +21,9 @@ int main(void)
 		if (chars_read == -1 || strcmp(bufferEntry, "exit\n") == 0)
 			((bufferEntry) ? free(bufferEntry), exit(status) : 0);
 
+		else if (strcmp(bufferEntry, "env\n") == 0)
+			print_env();
+
 		/*path copy so not modify the original buffer*/
 		comandPath = strdup(bufferEntry);
 
