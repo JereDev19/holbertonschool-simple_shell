@@ -18,6 +18,22 @@ void print_env(void)
 }
 
 /**
+ * print_path - Write a function that prints each directory of the PATH.
+ */
+
+void print_path(void)
+{
+	unsigned int i = 0;
+	char *env = _getenv("PATH"), *dir;
+
+	while (env)
+	{
+		printf("%s\n", env);
+		env = strtok(NULL, ":");
+	}
+}
+
+/**
  * print_env_environ - print env and environ.
  *
  * @argc: cant of arguments.
@@ -44,15 +60,19 @@ void print_env_environ(int argc, char **ar, char **env)
 
 char *_getenv(const char *name)
 {
-	int i = 0, len_name = 0;
-	char *buffer = NULL, *tokens = NULL;
+	int i = 0, len_name = 0, environ_size = 0;
+	char *buffer = NULL, *tokens = NULL, *result;
+	char **environ_copy = environ;
 
-	buffer = malloc(sizeof(char *) * environ);
+	while (environ_copy[environ_size] != NULL)
+		environ_size++;
+
+	buffer = malloc(sizeof(char *) * (environ_size + 1));
 
 	if (!name || !buffer)
 		return (NULL);
 
-	while (environ[i])
+	for (; environ[i]; i++)
 	{
 		buffer = strdup(environ[i]);
 		tokens = strtok(buffer, "=");
@@ -64,44 +84,22 @@ char *_getenv(const char *name)
 			tokens = strtok(NULL, "=");
 			if (tokens)
 			{
+				result = strdup(tokens);
 				free(buffer);
-				return (strdup(tokens));
+				return (result);
 			}
 			free(buffer);
 		}
 		free(buffer);
-		i++;
 	}
 	return (NULL);
 }
-
-/**
- * print_path - Write a function that prints each directory of the PATH.
- */
-
-void print_path(void)
-{
-	unsigned int i = 0;
-	char *env = _getenv("PATH"), *dir;
-
-	if (!env)
-		return;
-
-	dir = strtok(env, ":");
-
-	while (dir)
-	{
-		printf("%s\n", dir);
-		dir = strtok(NULL, ":");
-	}
-}
-
 
 int
 forkProcess(char **arguments)
 {
 	int status = 0;
 
-	((fork() == 0) ? execve(args[0], arguments, environ) : wait(&status));
+	((fork() == 0) ? execve(arguments[0], arguments, environ) : wait(&status));
 	return (WEXITSTATUS(status));
 }
