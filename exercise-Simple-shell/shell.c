@@ -4,8 +4,7 @@ int main(void)
 {
 	ssize_t chars_read = 0;
 	size_t sizeBuffer = 0;
-	char *bufferEntry = NULL;
-	char *comandPath = NULL;
+	char *bufferEntry = NULL, *comandPath = NULL;
 	int status = 0;
 
 	bufferEntry = malloc(sizeof(char *) * sizeBuffer);
