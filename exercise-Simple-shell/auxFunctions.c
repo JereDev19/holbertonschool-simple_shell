@@ -47,7 +47,7 @@ char *_getenv(const char *name)
 	int i = 0, len_name = 0;
 	char *buffer = NULL, *tokens = NULL;
 
-	buffer = malloc(sizeof(char *) * environ);
+	buffer = malloc(sizeof(char *) * (i + 1));
 
 	if (!name || !buffer)
 		return (NULL);
@@ -67,11 +67,11 @@ char *_getenv(const char *name)
 				free(buffer);
 				return (strdup(tokens));
 			}
-			free(buffer);
 		}
 		free(buffer);
 		i++;
 	}
+	free(buffer);
 	return (NULL);
 }
 
@@ -101,6 +101,6 @@ int forkProcess(char **arguments)
 {
 	int status = 0;
 
-	((fork() == 0) ? execve(args[0], arguments, environ) : wait(&status));
+	((fork() == 0) ? execve(arguments[0], arguments, environ) : wait(&status));
 	return (WEXITSTATUS(status));
 }

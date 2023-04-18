@@ -16,7 +16,7 @@ extern char **environ;
 int main(void);
 void print_env(void);
 void print_env_environ(int, char **, char **);
-char *_getenv(char *name);
+char *_getenv(const char *name);
 void print_path(void);
 int forkProcess(char **);
 
