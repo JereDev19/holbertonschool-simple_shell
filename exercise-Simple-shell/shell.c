@@ -17,6 +17,8 @@ int main(void)
 	{
 		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
 		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
+		if (chars_read == -1)
+			return (-1);
 		token = strtok(bufferEntry, "\t \n");
 
 		while (token != NULL) 
@@ -44,10 +46,15 @@ int main(void)
 		
 			if (child > 0)
 			{
-		
-			}else if (child == 0)
+				wait(&status);
+			}
+			else if (child == 0)
 			{
-				execve(command, args, environ);
+				execve(command, args, NULL);
+			}
+			else
+			{
+				perror("Error:");
 			}
 		}
 	}
