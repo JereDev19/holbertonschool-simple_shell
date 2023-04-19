@@ -23,7 +23,7 @@ char *_getenv(const char *name);
 
 /* Function to work with PATH*/
 void print_path(void);
-char *entry_commands(char *);
+char *get_path(char *);
 
 /*To create proccess*/
 int forkProcess(char **);
