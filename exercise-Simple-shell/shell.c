@@ -16,7 +16,7 @@ int main(void)
 		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
 		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
 		token = strtok(bufferEntry, "\t \n");
-
+		
 		char **args = malloc(sizeof(char *) * sizeBuffer);
 		if (!args)
 			return (2);
@@ -38,7 +38,6 @@ int main(void)
 		comandPath = strdup(bufferEntry);
 		command = get_path(comandPath);
 
-		
 		if (command != NULL)
 		{
 			pid_t child = fork();
@@ -50,14 +49,13 @@ int main(void)
 			else if (child == 0)
 			{
 				execve(command, args, environ);
-				free(command);
 			}
 			else
 			{
 				perror("Error");
-				free(command);
 				return (1);
 			}
+		free(comandPath);
 		free(args[0]);
 		free(args);
 		}
