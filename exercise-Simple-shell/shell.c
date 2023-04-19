@@ -7,10 +7,8 @@ int main(void)
 	char *bufferEntry = NULL, *comandPath = NULL, *command = NULL, *token = NULL;
 	int status = 0, i = 0;
 
-	bufferEntry = malloc(sizeof(char *) * sizeBuffer);
-	char **args = malloc(sizeof(char *) * sizeBuffer);
-
-	if (!bufferEntry || !args)
+	bufferEntry = malloc(sizeof(char) * sizeBuffer);
+	if (!bufferEntry)
 		return (2);
 
 	while (1)
@@ -19,24 +17,27 @@ int main(void)
 		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
 		token = strtok(bufferEntry, "\t \n");
 
+		char **args = malloc(sizeof(char *) * sizeBuffer);
+		if (!args)
+			return (2);
+
 		while (token != NULL) 
 		{
 			args[i] = token;
 			token = strtok(NULL, " \n");
  			i++;
 		}
-		args[i] = NULL;
-
 		/* -- Verify if the command is exit or the user place exit --*/
 		if (chars_read == -1 || strcmp(bufferEntry, "exit\n") == 0)
 			((bufferEntry) ? free(bufferEntry), exit(status) : 0);
-
+		
 		else if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
 
 		/*path copy so not modify the original buffer*/
 		comandPath = strdup(bufferEntry);
 		command = get_path(comandPath);
+
 		
 		if (command != NULL)
 		{
@@ -44,11 +45,21 @@ int main(void)
 		
 			if (child > 0)
 			{
-		
-			}else if (child == 0)
+				wait(&status);
+			}
+			else if (child == 0)
 			{
 				execve(command, args, environ);
+				free(command);
 			}
+			else
+			{
+				perror("Error");
+				free(command);
+				return (1);
+			}
+		free(args[0]);
+		free(args);
 		}
 	}
 }
