@@ -4,17 +4,28 @@ int main(void)
 {
 	ssize_t chars_read = 0;
 	size_t sizeBuffer = 0;
-	char *bufferEntry = NULL, *comandPath = NULL;
-	int status = 0;
+	char *bufferEntry = NULL, *comandPath = NULL, *command = NULL, *token = NULL;
+	int status = 0, i = 0;
 
 	bufferEntry = malloc(sizeof(char *) * sizeBuffer);
-	if (!bufferEntry)
-		return (1);
+	char **args = malloc(sizeof(char *) * sizeBuffer);
+
+	if (!bufferEntry || !args)
+		return (2);
 
 	while (1)
 	{
 		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
 		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
+		token = strtok(bufferEntry, "\t \n");
+
+		while (token != NULL) 
+		{
+			args[i] = token;
+			token = strtok(NULL, " \n");
+ 			i++;
+		}
+		args[i] = NULL;
 
 		/* -- Verify if the command is exit or the user place exit --*/
 		if (chars_read == -1 || strcmp(bufferEntry, "exit\n") == 0)
@@ -25,15 +36,19 @@ int main(void)
 
 		/*path copy so not modify the original buffer*/
 		comandPath = strdup(bufferEntry);
-
-		/**
-		 * Pasos generales: (nos vamos a encontrar 30 mil error en el medio)
-		 *
-		 * Step 1:
-		 *  - Hacer funcion que devuelva un array con los parametros dados (en cada indice un determinado parametro o argumento).
-		 *
-		 * Step 2:
-		 *  - Buscar el path de ese argumento que obtuvimos y ejecutar el comando.
-		 */
+		command = get_path(comandPath);
+		
+		if (command != NULL)
+		{
+			pid_t child = fork();
+		
+			if (child > 0)
+			{
+		
+			}else if (child == 0)
+			{
+				execve(command, args, environ);
+			}
+		}
 	}
 }
