@@ -55,11 +55,15 @@ int main(void)
 				}
 				free(command);
 			}
+			else
+			{
+				status = 2;
+			}
 		}
 		free(args);
 		free(comandPathCopy);
 		satty == 1 ? write(1, "$ ", 2) : 0;
 	}
 	free(bufferEntry);
-	return (0);
+	return (status);
 }
