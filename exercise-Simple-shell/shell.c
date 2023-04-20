@@ -21,6 +21,12 @@ int main(void)
 
 	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
 	{
+		if (strlen(bufferEntry) == 1)
+		{
+			satty == 1 ? write(1, "$ ", 2) : 0;
+			continue;
+		}
+
 		if (strcmp(bufferEntry, "exit\n") == 0)
 			break;
 
