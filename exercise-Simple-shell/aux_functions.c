@@ -23,8 +23,7 @@ void print_env(void)
 
 void print_path(void)
 {
-	unsigned int i = 0;
-	char *env = _getenv("PATH"), *dir;
+	char *env = _getenv("PATH");
 
 	while (env)
 	{

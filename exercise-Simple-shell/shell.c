@@ -8,7 +8,7 @@
 int main(void)
 {
 	size_t sizeBuffer = BUFFER_SIZE;
-	char *command = NULL, *comandPathCopy = NULL, *token = NULL;
+	char *command = NULL, *comandPathCopy = NULL;
 	char **args = NULL;
 	int status = 0, satty = isatty(STDOUT_FILENO);
 
