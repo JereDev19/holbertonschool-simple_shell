@@ -37,18 +37,19 @@ char
 **generate_args(char *param)
 {
 	int i = 0, b = 1;
-	char *commandPathCopy = NULL, *token = NULL, *delimiters = NULL, **args = NULL;
-	
+	char *commandPathCopy = NULL, *token = NULL;
+	char *delimiters = NULL, **args = NULL;
+
 	delimiters = "\t \n";
 
 	commandPathCopy = strdup(param);
 	if (!commandPathCopy)
 		return (NULL);
 
-	token = strtok(commandPathCopy, delimiters);	
+	token = strtok(commandPathCopy, delimiters);
 	while (token)
 		token = strtok(NULL, delimiters), b++;
-	
+
 	args = malloc(sizeof(char *) * b);
 	if (!args)
 	{
@@ -59,7 +60,7 @@ char
 	args[i++] = strtok(param, delimiters);
 	while (i < b)
 		args[i] = strtok(NULL, delimiters), i++;
-	
+
 	free(commandPathCopy);
 	return (args);
 }
