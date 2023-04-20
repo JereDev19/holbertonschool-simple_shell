@@ -8,21 +8,21 @@ int main(void)
 	size_t sizeBuffer = BUFFER_SIZE;
 	char *command = NULL, *comandPathCopy = NULL, *token = NULL;
 	char **args = NULL;
-	int status = 0;
+	int status = 0, i, b;
 
 	char *bufferEntry = malloc(sizeof(char) * sizeBuffer);
 	if (!bufferEntry)
 		return (2);
 	while (1)
 	{
-		int i = 0, b = 1;
+		i = 0, b = 1;
 		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
 		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
 		comandPathCopy = strdup(bufferEntry);
 		token = strtok(comandPathCopy, "\t \n");
 		while (token)
 			b++, token = strtok(NULL, "\t \n");
-		char **args = malloc(sizeof(char *) * b);
+		args = malloc(sizeof(char *) * b);
 		if (!args)
 			return (2);
 		args[i++] = strtok(bufferEntry, "\t \n");
