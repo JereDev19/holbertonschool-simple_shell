@@ -1,8 +1,8 @@
 #include "shell.h"
 /**
- * get_path -
- * @command:
- * Return:
+ * get_path - function that return the whole path of a given command
+ * @command: given command
+ * Return: whole path of the command
  */
 char *get_path(char *command)
 {
