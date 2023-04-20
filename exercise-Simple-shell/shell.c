@@ -5,11 +5,10 @@
 int main(void)
 {
 	size_t sizeBuffer = BUFFER_SIZE;
-	char *command = NULL, *comandPathCopy = NULL, *token = NULL;
-	char **args = NULL;
+	char *command = NULL, *comandPathCopy = NULL, *token = NULL, **args = NULL, *bufferEntry = NULL;
 	int status = 0, satty = isatty(STDOUT_FILENO);
 
-	char *bufferEntry = malloc(sizeof(char) * sizeBuffer);
+	bufferEntry = malloc(sizeof(char) * sizeBuffer);
 	if (!bufferEntry)
 		return (2);
 	
@@ -19,13 +18,13 @@ int main(void)
 	{
 		if (strcmp(bufferEntry, "exit\n") == 0)
 			break;
-
 		args = generate_args(bufferEntry);
 		if (!args)
 			return (2);
-
-		else if (strcmp(bufferEntry, "env\n") == 0)
+		if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
+		else if (strcmp(bufferEntry, "\n") == 0)
+			satty == 1 ? write(1, "", 0) : 0;
 		else
 		{
 			command = get_path(args[0]);
