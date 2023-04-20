@@ -22,8 +22,10 @@ char *get_path(char *command)
 			file_path = malloc(command_len + dir_len + 2);
 
 			if (!file_path)
+			{
+				free(path_copy);
 				return (NULL);
-
+			}
 			strcpy(file_path, path_token);
 			strcat(file_path, "/");
 			strcat(file_path, command);
@@ -43,6 +45,11 @@ char *get_path(char *command)
 		free(path_copy);
 		if (stat(command, &buffer) == 0)
 			return (command);
+		else
+		{
+			perror("Command not found");
+			return (NULL);
+		}
 		return (NULL);
 	}
 	return (NULL);
