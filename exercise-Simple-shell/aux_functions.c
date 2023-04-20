@@ -33,20 +33,38 @@ void print_path(void)
 	}
 }
 
-/**
- * print_env_environ - print env and environ.
- *
- * @argc: cant of arguments.
- * @ar: value of those arguments.
- * @env: environment of variable.
- *
- * Exercise 1.
- */
-
-void print_env_environ(int argc, char **ar, char **env)
+char
+**generate_args(char *param)
 {
-	printf("Adress of env: %p\n", (void *)env);
-	printf("Addres of environ: %p\n", (void *)environ);
+	int i = 0, b = 0;
+	char *commandPathCopy = NULL, *token = NULL, *delimiters = NULL, **args = NULL;
+	
+	delimiters = "\t \n";
+
+	commandPathCopy = strdup(param);
+	if (!commandPathCopy)
+		return (NULL);
+
+	token = strtok(param, delimiters);	
+	while (token)
+	{
+		b++;
+		token = strtok(NULL, delimiters);
+	}
+	args = malloc(sizeof(char *) * b);
+	if (!args)
+	{
+		free(commandPathCopy);
+		return (NULL);
+	}
+
+	args[i++] = strtok(param, delimiters);
+	while (i < b)
+	{
+		i++, args[i] = strtok(NULL, delimiters);
+	}
+	free(commandPathCopy);
+	return (args);
 }
 
 /**
@@ -60,38 +78,28 @@ void print_env_environ(int argc, char **ar, char **env)
 
 char *_getenv(const char *name)
 {
-	int i = 0, len_name = 0, environ_size = 0;
-	char *buffer = NULL, *tokens = NULL, *result;
-	char **environ_copy = environ;
+	char *buffer = NULL, *token = NULL, **environ_copy = environ;
+	int i = 0, b = 0, environ_size = 0;
 
-	while (environ_copy[environ_size] != NULL)
+	for (; environ_copy[b]; b++)
 		environ_size++;
 
-	buffer = malloc(sizeof(char *) * (environ_size + 1));
-
-	if (!name || !buffer)
+	buffer = malloc(sizeof(char) * (environ_size + 1));
+	if (!buffer)
 		return (NULL);
 
 	for (; environ[i]; i++)
 	{
-		buffer = strdup(environ[i]);
-		tokens = strtok(buffer, "=");
-
-		/*Verify the name with the first ocurrence of = - (left side)*/
-		if (strcmp(name, tokens) == 0)
-		{
-			/*To remain where it was found. Gets the value of that env*/
-			tokens = strtok(NULL, "=");
-			if (tokens)
-			{
-				result = strdup(tokens);
-				free(buffer);
-				return (result);
-			}
-			free(buffer);
-		}
 		free(buffer);
-		i++;
+		buffer = strdup(environ[i]);
+		buffer = strtok(buffer, "=");
+		if (strcmp(buffer, name) == 0)
+		{
+			token = strdup(strtok(NULL, "="));
+			free(buffer);
+			return (token);
+		}
 	}
+	free(buffer);
 	return (NULL);
 }

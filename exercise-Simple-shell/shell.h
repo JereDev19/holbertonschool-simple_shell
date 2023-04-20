@@ -13,12 +13,14 @@
 
 extern char **environ;
 
+/* Function to generate arguments */
+char **generate_args(char *param);
+
 /* Principal function */
 int main(void);
 
 /* Function to work with ENV and ENVIRON*/
 void print_env(void);
-void print_env_environ(int, char **, char **);
 char *_getenv(const char *name);
 
 /* Function to work with PATH*/

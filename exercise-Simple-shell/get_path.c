@@ -24,6 +24,7 @@ char *get_path(char *command)
 			if (!file_path)
 			{
 				free(path_copy);
+				free(path);
 				return (NULL);
 			}
 			strcpy(file_path, path_token);
@@ -34,6 +35,7 @@ char *get_path(char *command)
 			if (stat(file_path, &buffer) == 0)
 			{
 				free(path_copy);
+				free(path);
 				return (file_path);
 			}
 			else
@@ -44,13 +46,19 @@ char *get_path(char *command)
 		}
 		free(path_copy);
 		if (stat(command, &buffer) == 0)
+		{
+			free(path);
 			return (command);
+		}
 		else
 		{
+			free(path);
 			perror("Command not found");
 			return (NULL);
 		}
+		free(path);
 		return (NULL);
 	}
+	free(path);
 	return (NULL);
 }

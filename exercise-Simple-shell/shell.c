@@ -4,33 +4,26 @@
 
 int main(void)
 {
-	ssize_t chars_read = 0;
 	size_t sizeBuffer = BUFFER_SIZE;
 	char *command = NULL, *comandPathCopy = NULL, *token = NULL;
 	char **args = NULL;
-	int status = 0, i, b;
+	int status = 0, satty = isatty(STDOUT_FILENO);
 
 	char *bufferEntry = malloc(sizeof(char) * sizeBuffer);
 	if (!bufferEntry)
 		return (2);
-	while (1)
+	
+	satty == 1 ? write(1, "$ ", 2) : 0;
+
+	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
 	{
-		i = 0, b = 1;
-		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
-		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
-		comandPathCopy = strdup(bufferEntry);
-		token = strtok(comandPathCopy, "\t \n");
-		while (token)
-			b++, token = strtok(NULL, "\t \n");
-		args = malloc(sizeof(char *) * b);
+		if (strcmp(bufferEntry, "exit\n") == 0)
+			break;
+
+		args = generate_args(bufferEntry);
 		if (!args)
 			return (2);
-		args[i++] = strtok(bufferEntry, "\t \n");
-		while (i < b)
-			args[i] = strtok(NULL, " \n"), i++;
-		
-		if (chars_read == -1 || strcmp(bufferEntry, "exit\n") == 0)
-			((bufferEntry) ? free(bufferEntry), exit(0) : 0);
+
 		else if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
 		else
@@ -45,6 +38,7 @@ int main(void)
 					execve(command, args, environ);
 				else
 				{
+					free(args);
 					perror("Error");
 					return (1);
 				}
@@ -53,5 +47,8 @@ int main(void)
 		}
 		free(args);
 		free(comandPathCopy);
+		satty == 1 ? write(1, "$ ", 2) : 0;
 	}
+	free(bufferEntry);
+	return (0);
 }
