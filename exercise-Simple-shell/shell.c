@@ -39,10 +39,17 @@ int main(void)
 			if (command)
 			{
 				pid_t child = fork();
-				((child > 0) ? wait(&status) : (child == 0) ? execve(command, args, environ) 
-				: perror("Error"), (1));
+				if (child > 0)
+					wait(&status);
+				else if (child == 0)
+					execve(command, args, environ);
+				else
+				{
+					perror("Error");
+					return (1);
+				}
 				free(command);
-			}
+			}	
 		}
 		free(args);
 		free(comandPathCopy);
