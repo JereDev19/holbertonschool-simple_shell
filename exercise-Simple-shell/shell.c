@@ -1,63 +1,54 @@
 #include "shell.h"
+#define MAX_ARGS 300
+#define BUFFER_SIZE 1024
 
 int main(void)
 {
-	ssize_t chars_read = 0;
-	size_t sizeBuffer = 0;
-	char *bufferEntry = NULL, *comandPath = NULL, *command = NULL, *token = NULL;
-	int status = 0, i = 0;
+	size_t sizeBuffer = BUFFER_SIZE;
+	char *command = NULL, *comandPathCopy = NULL, *token = NULL;
+	char **args = NULL;
+	int status = 0, satty = isatty(STDOUT_FILENO);
 
-	bufferEntry = malloc(sizeof(char) * sizeBuffer);
+	char *bufferEntry = malloc(sizeof(char) * sizeBuffer);
 	if (!bufferEntry)
 		return (2);
+	
+	satty == 1 ? write(1, "$ ", 2) : 0;
 
-	while (1)
+	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
 	{
-		(isatty(STDOUT_FILENO) == 1 ? write(1, "$ ", 2) : 0);
-		chars_read = getline(&bufferEntry, &sizeBuffer, stdin);
-		token = strtok(bufferEntry, "\t \n");
-		
-		char **args = malloc(sizeof(char *) * sizeBuffer);
+		if (strcmp(bufferEntry, "exit\n") == 0)
+			break;
+
+		args = generate_args(bufferEntry);
 		if (!args)
 			return (2);
 
-		while (token != NULL) 
-		{
-			args[i] = token;
-			token = strtok(NULL, " \n");
- 			i++;
-		}
-		/* -- Verify if the command is exit or the user place exit --*/
-		if (chars_read == -1 || strcmp(bufferEntry, "exit\n") == 0)
-			((bufferEntry) ? free(bufferEntry), exit(status) : 0);
-		
 		else if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
-
-		/*path copy so not modify the original buffer*/
-		comandPath = strdup(bufferEntry);
-		command = get_path(comandPath);
-		if (command != NULL)
+		else
 		{
-			pid_t child = fork();
-		
-			if (child > 0)
+			command = get_path(args[0]);
+			if (command)
 			{
-				wait(&status);
-			}
-			else if (child == 0)
-			{
-				execve(command, args, environ);
+				pid_t child = fork();
+				if (child > 0)
+					wait(&status);
+				else if (child == 0)
+					execve(command, args, environ);
+				else
+				{
+					free(args);
+					perror("Error");
+					return (1);
+				}
 				free(command);
-			}
-			else
-			{
-				perror("Error");
-				free(command);
-				return (1);
-			}
-		free(args[0]);
-		free(args);
+			}	
 		}
+		free(args);
+		free(comandPathCopy);
+		satty == 1 ? write(1, "$ ", 2) : 0;
 	}
+	free(bufferEntry);
+	return (0);
 }
