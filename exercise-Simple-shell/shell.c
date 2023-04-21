@@ -41,23 +41,15 @@ int main(void)
 			command = get_path(args[0]);
 			if (command)
 			{
-				pid_t child = fork();
-
-				if (child > 0)
-					wait(&status);
-				else if (child == 0)
-					execve(command, args, environ);
-				else
-				{
-					free(args);
-					perror("Error");
-					return (1);
-				}
-				free(command);
+				forkProcess(command, args);
 			}
+			else
+				status = 2;
+			free(bufferEntry);
 		}
 		free(args);
 		free(comandPathCopy);
+		free(bufferEntry);
 		satty == 1 ? write(1, "$ ", 2) : 0;
 	}
 	free(bufferEntry);
