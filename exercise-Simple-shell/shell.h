@@ -28,6 +28,6 @@ void print_path(void);
 char *get_path(char *);
 
 /*To create proccess*/
-int forkProcess(char **);
+int forkProcess(char *, char **);
 
 #endif

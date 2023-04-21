@@ -1,10 +1,24 @@
 #include "shell.h"
 
 int
-forkProcess(char **arguments)
+forkProcess(char *command, char **arguments)
 {
 	int status = 0;
 
-	((fork() == 0) ? execve(arguments[0], arguments, environ) : wait(&status));
+	pid_t child = fork();
+
+	if (child > 0)
+	{
+		wait(&status);
+	}
+	else if (child == 0)
+	{
+		execve(command, arguments, environ);
+	}
+	else
+	{
+		free(arguments);
+		perror("SE PUDRIO TODO, LA TENSA");
+	}
 	return (WEXITSTATUS(status));
 }
