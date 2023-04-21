@@ -9,13 +9,16 @@ char *get_path(char *command)
 	char *path, *path_copy, *path_token, *file_path;
 	int command_len, dir_len;
 	struct stat buffer;
-
+	
+	if (stat(command, &buffer) == 0)
+		return (command);
 	path = _getenv("PATH");
 	if (path)
 	{
 		path_copy = strdup(path);
 		command_len = strlen(command);
 		path_token = strtok(path_copy, ":");
+		
 		while (path_token != NULL)
 		{
 			dir_len = strlen(path_token);
@@ -45,16 +48,6 @@ char *get_path(char *command)
 			}
 		}
 		free(path_copy);
-		if (stat(command, &buffer) == 0)
-		{
-			free(path);
-			return (command);
-		}
-		else
-		{
-			free(path);
-			return (NULL);
-		}
 		free(path);
 		return (NULL);
 	}
