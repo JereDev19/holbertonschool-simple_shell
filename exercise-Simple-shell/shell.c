@@ -12,11 +12,6 @@ int main(void)
 	char **args = NULL;
 	int status = 0, satty = isatty(STDOUT_FILENO);
 
-	//char *bufferEntry = malloc(sizeof(char) * sizeBuffer);
-  
-	//if (!bufferEntry)
-		//return (2);
-
 	satty == 1 ? write(1, "$ ", 2) : 0;
 
 	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
@@ -39,24 +34,11 @@ int main(void)
 			command = get_path(args[0]);
 			if (command)
 			{
-				pid_t child = fork();
-
-				if (child > 0)
-					wait(&status);
-				else if (child == 0)
-					execve(command, args, environ);
-				else
-				{
-					free(args);
-					perror("Error");
-					return (1);
-				}
+				status = forkProcess(command, args);
 				free(command);
 			}
 			else
-			{
 				status = 2;
-			}
 		}
 		free(args);
 		free(comandPathCopy);
