@@ -16,9 +16,6 @@ extern char **environ;
 /* Function to generate arguments */
 char **generate_args(char *param);
 
-/* Principal function */
-int main(void);
-
 /* Function to work with ENV and ENVIRON*/
 void print_env(void);
 char *_getenv(const char *name);
@@ -27,7 +24,10 @@ char *_getenv(const char *name);
 void print_path(void);
 char *get_path(char *);
 
+/* Function to print command not founded*/
+void printErr(int count, char* name, char* bufferEntry);
+
 /*To create proccess*/
-int forkProcess(char **);
+int forkProcess(char *, char **);
 
 #endif

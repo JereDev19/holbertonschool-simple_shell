@@ -53,7 +53,6 @@ char *get_path(char *command)
 		else
 		{
 			free(path);
-			perror("Command not found");
 			return (NULL);
 		}
 		free(path);

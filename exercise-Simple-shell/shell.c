@@ -1,58 +1,48 @@
 #include "shell.h"
-#define MAX_ARGS 300
-#define BUFFER_SIZE 1024
 /**
- * main - replicate of a shell
- * Return: FALTA DETERMINAR LOS VALORES DE RETURN
- */
-int main(void)
+* main - replicate of a shell
+* Return: FALTA DETERMINAR LOS VALORES DE RETURN
+*/
+int main(int argc, char *argv[])
 {
-	size_t sizeBuffer = BUFFER_SIZE;
-	char *command = NULL, *comandPathCopy = NULL;
-	char **args = NULL;
-	int status = 0, satty = isatty(STDOUT_FILENO);
-
-	char *bufferEntry = malloc(sizeof(char) * sizeBuffer);
-	if (!bufferEntry)
-		return (2);
-
-	satty == 1 ? write(1, "$ ", 2) : 0;
-	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
-	{
-		args = generate_args(bufferEntry);
-		if (!args)
-			return (2);
-		if (strlen(bufferEntry) == 1)
-		{
-			satty == 1 ? write(1, "$ ", 2) : 0;
-			continue;
-		}
-		if (strcmp(bufferEntry, "exit\n") == 0)
-			break;
-		else if (strcmp(bufferEntry, "env\n") == 0)
-			print_env();
-		else
-		{
-			command = get_path(args[0]);
-			if (command)
-			{
-				pid_t child = fork();
-
-				(child > 0) ? wait(&status) : ((child == 0) ? execve(command, args, environ) : perror("Error"));
-				if (child == -1)
-				{
-					free(args);
-					perror("Error");
-					return (1);
-				}
-				free(command);
-			}
-			else
-				status = 2;
-		}
-		free(args), free(comandPathCopy);
-		satty == 1 ? write(1, "$ ", 2) : 0;
-	}
-	free(bufferEntry);
-	return (status);
+    size_t sizeBuffer = 0;
+    char *command = NULL, *comandPathCopy = NULL, *bufferEntry = NULL, **args = NULL;
+    int status = 0, satty = isatty(STDOUT_FILENO), count = 0;
+    (void)argc;
+    satty == 1 ? write(1, "$ ", 2) : 0;
+    while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
+    {
+	count += 1;
+        if (strlen(bufferEntry) == 1)
+        {
+            satty == 1 ? write(1, "$ ", 2) : 0;
+		continue;
+        }
+        if (strcmp(bufferEntry, "exit\n") == 0)
+            break;
+        args = generate_args(bufferEntry);
+        if (!args)
+            return (2);
+        if (strcmp(bufferEntry, "env\n") == 0)
+            print_env();
+        else
+        {
+            command = get_path(args[0]);
+            if (command)
+            {
+                status = forkProcess(command, args);
+		free(command);
+            }
+            else
+	    {
+		printErr(count, argv[0], bufferEntry);
+                status = 127;
+	    }
+        }
+        free(args);
+        free(comandPathCopy);
+        satty == 1 ? write(1, "$ ", 2) : 0;
+    }
+    free(bufferEntry);
+    return (status);
 }
