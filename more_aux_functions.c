@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+* forkProcces - Function that execute a child process.
+* @command: path of param.
+* @arguments: arguments of the command.
+* Return: status of child process.
+*/
+
 int
 forkProcess(char *command, char **arguments)
 {
@@ -22,7 +29,8 @@ forkProcess(char *command, char **arguments)
 	return (WEXITSTATUS(status));
 }
 
-void printErr(int count, char *name, char *bufferEntry)
+void
+printErr(int count, char *name, char *bufferEntry)
 {
 	printf("%s: %d: '%s': not found\n", name, count, bufferEntry);
 }

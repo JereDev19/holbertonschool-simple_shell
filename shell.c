@@ -2,19 +2,19 @@
 
 /**
 * main - replicate of a shell.
-* @args: cant of params.
-* @argv: values of params.
-* Return: Status.
+* @argc: number of params.
+* @argv: array with values of paramams.
+* Return:  return exit status of last program.
 */
 
 int main(int argc, char *argv[])
 {
 	size_t sizeBuffer = 0;
-	char *command = NULL, *comandPathCopy = NULL, bufferEntry = NULL;
-	char **args = NULL;
+	char *command = NULL, *bufferEntry = NULL, **args = NULL;
 	int status = 0, satty = isatty(STDOUT_FILENO), count = 0;
 	(void)argc;
 	satty == 1 ? write(1, "$ ", 2) : 0;
+
 	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
 	{
 		count += 1;
@@ -34,12 +34,17 @@ int main(int argc, char *argv[])
 		{
 			command = get_path(args[0]);
 			if (command)
-				status = forkProcess(command, args), free(command);
+			{
+				status = forkProcess(command, args);
+				free(command);
+			}
 			else
-				printErr(count, argv[0], bufferEntry), status = 127;
+			{
+				printErr(count, argv[0], bufferEntry);
+				status = 127;
+			}
 		}
 		free(args);
-		free(comandPathCopy);
 		satty == 1 ? write(1, "$ ", 2) : 0;
 	}
 	free(bufferEntry);

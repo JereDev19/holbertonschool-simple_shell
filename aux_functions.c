@@ -17,21 +17,6 @@ void print_env(void)
 		printf("%s\n", environ[i]);
 }
 
-/**
- * print_path - Write a function that prints each directory of the PATH.
- */
-
-void print_path(void)
-{
-	char *env = _getenv("PATH");
-
-	while (env)
-	{
-		printf("%s\n", env);
-		env = strtok(NULL, ":");
-	}
-}
-
 char
 **generate_args(char *param)
 {
