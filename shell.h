@@ -25,7 +25,7 @@ void print_path(void);
 char *get_path(char *);
 
 /* Function to print command not founded*/
-void printErr(int count, char* name, char* bufferEntry);
+void printErr(int count, char *name, char *bufferEntry);
 
 /*To create proccess*/
 int forkProcess(char *, char **);
