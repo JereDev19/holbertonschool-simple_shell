@@ -26,9 +26,10 @@ int main(int argc, char *argv[])
 			satty == 1 ? write(1, "$ ", 2) : 0;
 			continue;
 		}
-		if (strcmp(args[0], "exit\n") == 0)
+		if (strcmp(bufferEntry, "exit\n") == 0)
 		{
-			free(bufferEntry);
+			if (bufferEntry)
+				free(bufferEntry);
 			exit(status);
 		}
 		if (strcmp(args[0], "env\n") == 0)
