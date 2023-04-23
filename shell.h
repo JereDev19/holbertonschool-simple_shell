@@ -31,4 +31,10 @@ void printErr(int count, char *name, char *bufferEntry);
 /*To create child proccess and get status of it*/
 int forkProcess(char *, char **);
 
+
+/* Strings functions */
+int _putchar(char);
+
+void _puts(char *);
+
 #endif

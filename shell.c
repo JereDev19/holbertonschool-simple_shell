@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		args = generate_args(bufferEntry);
 		if (!args)
 			return (2);
-		if (strcmp(bufferEntry, "env\n") == 0)
+		if (strcmp(args[0], "env\n") == 0)
 			print_env();
 		else
 		{
