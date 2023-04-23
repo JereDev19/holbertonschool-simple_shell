@@ -24,7 +24,10 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		if (strcmp(bufferEntry, "exit\n") == 0)
-			break;
+		{
+			free(bufferEntry);
+			exit(status);
+		}
 		args = generate_args(bufferEntry);
 		if (!args)
 			return (2);
