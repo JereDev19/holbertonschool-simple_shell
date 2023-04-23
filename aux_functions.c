@@ -12,8 +12,8 @@ void print_env(void)
 
 	for (i = 0; environ && environ[i]; i++)
 	{
-		_puts(environ[i]);
-		_putchar('\n');
+		puts(environ[i]);
+		putchar('\n');
 	}
 }
 
