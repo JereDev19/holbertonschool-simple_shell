@@ -6,15 +6,14 @@
  * Exercise 0.
  */
 
-void print_env(void)
+void _print_env(void)
 {
-	int i = 0;
+	int i;
 
-	while (environ && environ[i])
+	for (i = 0; environ && environ[i]; i++)
 	{
 		puts(environ[i]);
 		putchar('\n');
-		i++;
 	}
 }
 
