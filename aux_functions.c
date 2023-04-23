@@ -17,29 +17,6 @@ void print_env(void)
 	}
 }
 
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char character)
-{
-	return (write(1, &character, 1));
-}
-
-void _puts(char *string)
-{
-	int i = 0;
-
-	while (*(string + i))
-	{
-		_putchar(*(string + i));
-		i++;
-	}
-}
-
 char
 **generate_args(char *param)
 {

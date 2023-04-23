@@ -18,19 +18,19 @@ int main(int argc, char *argv[])
 	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
 	{
 		count += 1;
+		args = generate_args(bufferEntry);
+		if (!args)
+			return (2);
 		if (strlen(bufferEntry) == 1)
 		{
 			satty == 1 ? write(1, "$ ", 2) : 0;
 			continue;
 		}
-		if (strcmp(bufferEntry, "exit\n") == 0)
+		if (strcmp(args[0], "exit\n") == 0)
 		{
 			free(bufferEntry);
 			exit(status);
 		}
-		args = generate_args(bufferEntry);
-		if (!args)
-			return (2);
 		if (strcmp(args[0], "env\n") == 0)
 			print_env();
 		else
