@@ -20,7 +20,7 @@ void print_env(void)
 char
 **generate_args(char *param)
 {
-	int i = 0, b = 1;
+	int i = 0, lenthPath = 1;
 	char *commandPathCopy = NULL, *token = NULL;
 	char *delimiters = NULL, **args = NULL;
 
@@ -32,18 +32,21 @@ char
 
 	token = strtok(commandPathCopy, delimiters);
 	while (token)
-		token = strtok(NULL, delimiters), b++;
+		token = strtok(NULL, delimiters), lenthPath++;
 
-	args = malloc(sizeof(char *) * b);
+	args = malloc(sizeof(char *) * lenthPath);
 	if (!args)
 	{
 		free(commandPathCopy);
 		return (NULL);
 	}
-
 	args[i++] = strtok(param, delimiters);
-	while (i < b)
-		args[i] = strtok(NULL, delimiters), i++;
+
+	while (i < lenthPath)
+	{
+		args[i] = strtok(NULL, delimiters);
+		i++;
+	}
 
 	free(commandPathCopy);
 	return (args);
