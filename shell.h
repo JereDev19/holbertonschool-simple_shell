@@ -11,23 +11,24 @@
 #include <sys/types.h>
 #include <stdarg.h>
 
+/*Variable that it have all enviroment variables*/
 extern char **environ;
 
 /* Function to generate arguments */
 char **generate_args(char *param);
 
-/* Principal function */
-int main(void);
-
-/* Function to work with ENV and ENVIRON*/
+/* Function to print env. */
 void print_env(void);
+/* Get a give enviroment variable */
 char *_getenv(const char *name);
 
 /* Function to work with PATH*/
-void print_path(void);
 char *get_path(char *);
 
-/*To create proccess*/
+/* Function to print command not founded*/
+void printErr(int count, char *name, char *bufferEntry);
+
+/*To create child proccess and get status of it*/
 int forkProcess(char *, char **);
 
 #endif
