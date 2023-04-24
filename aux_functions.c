@@ -10,11 +10,11 @@ void print_env(void)
 {
 	int i;
 
-	for (i = 0; environ && environ[i]; i++)
-	{
-		puts(environ[i]);
-		putchar('\n');
-	}
+	if (!environ)
+		return;
+	
+	for (i = 0; environ[i]; i++)
+		printf("%s\n", environ[i]);
 }
 
 char
