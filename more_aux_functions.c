@@ -24,7 +24,8 @@ forkProcess(char *command, char **arguments)
 	}
 	else
 	{
-		free(arguments);
+		free_array(arguments);
+		perror("Error:");
 	}
 	return (WEXITSTATUS(status));
 }
