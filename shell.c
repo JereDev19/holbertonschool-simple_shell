@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
 	size_t sizeBuffer = 0;
 	char *command = NULL, *bufferEntry = NULL, **args = NULL;
-	int status = 0, satty = isatty(STDOUT_FILENO), count = 0, i = 0;
+	int status = 0, satty = isatty(STDOUT_FILENO), count = 0;
 	struct stat buffer;
 	(void)argc;
 	satty == 1 ? write(1, "$ ", 2) : 0;
@@ -25,7 +25,11 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		else if (strcmp(bufferEntry, "exit\n") == 0)
-			(bufferEntry) ? free(bufferEntry), exit(status) : (0);
+		{
+			if (bufferEntry)
+				free(bufferEntry);
+			exit(status);
+		}
 		if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
 		args = generate_args(bufferEntry);
