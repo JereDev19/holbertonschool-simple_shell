@@ -1,6 +1,5 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
-
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -30,6 +29,8 @@ void printErr(int count, char *name, char *bufferEntry);
 
 /*To create child proccess and get status of it*/
 int forkProcess(char *, char **);
+
+/*Free a double pointer*/
 void free_array(char **);
 
 #endif
