@@ -25,7 +25,8 @@ int main(int argc __attribute__((unused)), char *argv[])
 		}
 		else if (strcmp(bufferEntry, "exit\n") == 0)
 		{
-			((bufferEntry) ? free(bufferEntry) : 0);
+			if (bufferEntry)
+				free(bufferEntry);
 			exit(status);
 		}
 		if (strcmp(bufferEntry, "env\n") == 0)
