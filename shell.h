@@ -30,5 +30,6 @@ void printErr(int count, char *name, char *bufferEntry);
 
 /*To create child proccess and get status of it*/
 int forkProcess(char *, char **);
+void free_array(char **);
 
 #endif

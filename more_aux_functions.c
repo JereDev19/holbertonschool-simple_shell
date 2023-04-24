@@ -35,3 +35,10 @@ printErr(int count, char *name, char *bufferEntry)
 	printf("%s: %d: '%s': not found\n", name, count, bufferEntry);
 }
 
+void free_array(char **param)
+{
+        int i = 0;
+        for (; param[i]; i++)
+                free(param[i]);
+        free(param);
+}

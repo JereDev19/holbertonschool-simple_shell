@@ -10,8 +10,6 @@ char *get_path(char *command)
 	int command_len, dir_len;
 	struct stat buffer;
 
-	if (stat(command, &buffer) == 0)
-		return (command);
 	path = _getenv("PATH");
 	if (path)
 	{

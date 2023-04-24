@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	size_t sizeBuffer = 0;
 	char *command = NULL, *bufferEntry = NULL, **args = NULL;
 	int status = 0, satty = isatty(STDOUT_FILENO), count = 0;
+	struct stat buffer;
 	(void)argc;
 	satty == 1 ? write(1, "$ ", 2) : 0;
 
@@ -24,6 +25,7 @@ int main(int argc, char *argv[])
 		if (strlen(bufferEntry) == 1)
 		{
 			satty == 1 ? write(1, "$ ", 2) : 0;
+			free_array(args);
 			continue;
 		}
 		if (strcmp(bufferEntry, "exit\n") == 0)
@@ -36,17 +38,26 @@ int main(int argc, char *argv[])
 			print_env();
 		else
 		{
-			command = get_path(args[0]);
-			if (command)
+			if (stat(args[0], &buffer) == 0)
 			{
+				command = args[0];
 				status = forkProcess(command, args);
-				free(command);
 			}
 			else
 			{
-				printErr(count, argv[0], bufferEntry);
-				status = 127;
+				command = get_path(args[0]);
+				if (command)
+				{
+					status = forkProcess(command, args);
+					free(command);
+				}
+				else
+				{
+					printErr(count, argv[0], bufferEntry);
+					status = 127;
+				}
 			}
+			
 		}
 		free(args);
 		satty == 1 ? write(1, "$ ", 2) : 0;
