@@ -57,7 +57,6 @@ int main(int argc, char *argv[])
 					status = 127;
 				}
 			}
-			
 		}
 		free(args);
 		satty == 1 ? write(1, "$ ", 2) : 0;
