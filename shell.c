@@ -10,7 +10,7 @@
 int main(int argc __attribute__((unused)), char *argv[])
 {
 	size_t sizeBuffer = 0;
-	char *command = NULL, *bufferEntry = NULL, **args = NULL, *find_exit_v;
+	char *command = NULL, *bufferEntry = NULL, **args = NULL;
 	int status = 0, satty = isatty(STDOUT_FILENO), count = 0;
 	struct stat buffer;
 
