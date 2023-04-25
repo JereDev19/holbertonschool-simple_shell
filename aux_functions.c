@@ -12,7 +12,7 @@ void print_env(void)
 
 	if (!environ)
 		return;
-	
+
 	for (i = 0; environ[i]; i++)
 		printf("%s\n", environ[i]);
 }
