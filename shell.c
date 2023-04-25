@@ -4,7 +4,7 @@
  * main - replicate of a shell.
  * @argc: number of params.
  * @argv: array with values of paramams.
- * Return:  return exit status of last program.
+ * Return: return exit status of last program.
 */
 
 int main(int argc __attribute__((unused)), char *argv[])

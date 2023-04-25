@@ -2,10 +2,7 @@
 
 /**
  * print_env - print enviroment.
- *
- * Exercise 0.
  */
-
 void print_env(void)
 {
 	int i;
@@ -54,13 +51,9 @@ char
 
 /**
  * _getenv - Get a environment variable.
- *
  * @name: name of environment variable.
  * Return: environment variable.
- *
- * Exercise 2..
  */
-
 char *_getenv(const char *name)
 {
 	char *buffer = NULL, *token = NULL, **environ_copy = environ;

@@ -6,7 +6,6 @@
 * @arguments: arguments of the command.
 * Return: status of child process.
 */
-
 int
 forkProcess(char *command, char **arguments)
 {
@@ -33,12 +32,12 @@ forkProcess(char *command, char **arguments)
 void
 printErr(int count, char *name, char *bufferEntry)
 {
-	printf("%s: %d: '%s': not found\n", name, count, bufferEntry);
+	printf("%s: %d: %s: not found\n", name, count, bufferEntry);
 }
 
 /**
- * free_array - frees an array
- * @param: array to free
+ * free_array - frees an array.
+ * @param: array to free.
  */
 void free_array(char **param)
 {
