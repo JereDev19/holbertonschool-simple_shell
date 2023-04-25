@@ -56,10 +56,10 @@ char
  */
 char *_getenv(const char *name)
 {
-	char *buffer = NULL, *token = NULL, **environ_copy = environ;
+	char *buffer = NULL, *token = NULL;
 	int i = 0, b = 0, environ_size = 0;
 
-	for (; environ_copy[b]; b++)
+	for (; environ[b]; b++)
 		environ_size++;
 
 	buffer = malloc(sizeof(char) * (environ_size + 1));
