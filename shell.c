@@ -32,7 +32,10 @@ int main(int argc __attribute__((unused)), char *argv[])
 		{
 			/*If is rute absolute, ejecute this, if is only command, goes to the other*/
 			if (stat(args[0], &buffer) == 0)
-				command = args[0], status = forkProcess(command, args);
+			{
+				(command = get_path(args[0])) ? (status = forkProcess(command, args), free(command))
+                              : (printErr(count, argv[0], bufferEntry), status = 127);
+			}
 			else if (stat(args[0], &buffer) == -1)
 			{
 				command = get_path(args[0]);
