@@ -18,6 +18,7 @@ char **generate_args(char *param);
 
 /* Function to print env. */
 void print_env(void);
+
 /* Get a give enviroment variable */
 char *_getenv(const char *name);
 
