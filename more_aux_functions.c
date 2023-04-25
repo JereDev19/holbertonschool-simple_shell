@@ -24,7 +24,8 @@ forkProcess(char *command, char **arguments)
 	}
 	else
 	{
-		free(arguments);
+		free_array(arguments);
+		perror("Error:");
 	}
 	return (WEXITSTATUS(status));
 }
@@ -35,11 +36,16 @@ printErr(int count, char *name, char *bufferEntry)
 	printf("%s: %d: '%s': not found\n", name, count, bufferEntry);
 }
 
+/**
+ * free_array - frees an array
+ * @param: array to free
+ */
 void free_array(char **param)
 {
 	int i = 0;
 
 	for (; param[i]; i++)
 		free(param[i]);
+		
 	free(param);
 }
