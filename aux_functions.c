@@ -57,10 +57,10 @@ char
 char *_getenv(const char *name)
 {
 	char *buffer = NULL, *token = NULL;
-	int i = 0, b = 0, environ_size = 0;
+	int i = 0, environ_size = 0;
 
-	for (; environ[b]; b++)
-		environ_size++;
+	for (; environ[environ_size]; environ_size++)
+		;
 
 	buffer = malloc(sizeof(char) * (environ_size + 1));
 	if (!buffer)
@@ -78,6 +78,7 @@ char *_getenv(const char *name)
 			return (token);
 		}
 	}
+	
 	free(buffer);
 	return (NULL);
 }
