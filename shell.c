@@ -24,11 +24,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 			continue;
 		}
 		else if (strstr(bufferEntry, "exit"))
-		{
-			if (bufferEntry)
-				free(bufferEntry);
-			exit(status);
-		}
+			((bufferEntry) ? free(bufferEntry) : exit(status));
 		if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
 		args = generate_args(bufferEntry);
@@ -40,9 +36,13 @@ int main(int argc __attribute__((unused)), char *argv[])
 			else if (stat(args[0], &buffer) == -1)
 			{
 				command = get_path(args[0]);
-				status = command ? (forkProcess(command, args), free(command), status) :
-				(printErr(count, argv[0], bufferEntry), 127);
-
+				if (command)
+				{
+					status = forkProcess(command, args), free(command);
+					(status == -1) ? status = 2 : 0; /* si forkProcess falla, status es 2 */
+				}
+				else
+					printErr(count, argv[0], bufferEntry), status = 127;
 			}
 		}
 		free(args), satty == 1 ? write(1, "$ ", 2) : 0;
