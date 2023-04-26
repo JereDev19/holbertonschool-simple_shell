@@ -23,10 +23,11 @@ int main(int argc __attribute__((unused)), char *argv[])
 			satty == 1 ? write(1, "$ ", 2) : 0;
 			continue;
 		}
-		else if (strcmp(bufferEntry, "exit") == 0)
+		else if (strcmp(bufferEntry, "exit\n") == 0)
 		{
 			if (bufferEntry)
 				free(bufferEntry);
+			status = 0;
 			exit(status);
 		}
 		if (strcmp(bufferEntry, "env\n") == 0)
