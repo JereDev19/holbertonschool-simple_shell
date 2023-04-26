@@ -23,19 +23,15 @@ int main(int argc __attribute__((unused)), char *argv[])
 			satty == 1 ? write(1, "$ ", 2) : 0;
 			continue;
 		}
-		args = generate_args(bufferEntry);
-		if (strcmp(args[0], "exit") == 0)
+		else if (strcmp(bufferEntry, "exit") == 0)
 		{
-			if (bufferEntry && args[0])
-				free(args[0]), free(args);
+			if (bufferEntry)
+				free(bufferEntry);
 			exit(status);
 		}
-		if (strcmp(args[0], "env") == 0)
-		{
-			status = 0;
+		if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
-			exit(status);
-		}
+		args = generate_args(bufferEntry);
 		if (args && args[0])
 		{
 			/*If is rute absolute, ejecute this, if is only command, goes to the other*/
