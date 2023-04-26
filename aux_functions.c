@@ -57,30 +57,30 @@ char
  */
 char *_getenv(const char *name)
 {
-	char *buffer = NULL, *token = NULL;
+	char *bufferName = NULL, *token = NULL;
 	int i = 0, environ_size = 0;
 
 	for (; environ[environ_size]; environ_size++)
 		;
 
-	buffer = malloc(sizeof(char) * (environ_size + 1));
-	if (!buffer)
+	bufferName = malloc(sizeof(char) * (environ_size + 1));
+	if (!bufferName)
 		return (NULL);
 
 	for (; environ[i]; i++)
 	{
-		free(buffer);
-		buffer = strdup(environ[i]);
-		buffer = strtok(buffer, "=");
-		if (strcmp(buffer, name) == 0)
+		free(bufferName);
+		bufferName = strdup(environ[i]);
+		bufferName = strtok(bufferName, "=");
+		if (strcmp(bufferName, name) == 0)
 		{
 			token = strtok(NULL, "=");
 			if (token && token[0] != '\0')
 				token = strdup(token);
-			free(buffer);
+			free(bufferName);
 			return (token);
 		}
 	}
-	free(buffer);
+	free(bufferName);
 	return (NULL);
 }

@@ -27,7 +27,6 @@ int main(int argc __attribute__((unused)), char *argv[])
 		{
 			if (bufferEntry)
 				free(bufferEntry);
-			free(args);
 			exit(status);
 		}
 		args = generate_args(bufferEntry);
@@ -45,14 +44,11 @@ int main(int argc __attribute__((unused)), char *argv[])
 				command = get_path(args[0]);
 				if (command)
 				{
-					status = forkProcess(command, args);
-					free(command);
+					status = forkProcess(command, args), free(command);
 					(status == -1) ? status = 2 : 0; /* si forkProcess falla, status es 2 */
 				}
 				else
-				{
 					printErr(count, argv[0], bufferEntry), status = 127;
-				}
 			}
 		}
 		free(args), satty == 1 ? write(1, "$ ", 2) : 0;
