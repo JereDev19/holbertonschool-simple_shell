@@ -32,7 +32,7 @@ forkProcess(char *command, char **arguments)
 void
 printErr(int count, char *name, char *bufferEntry)
 {
-	printf("%s: %d: %s: not found\n", name, count, bufferEntry);
+	fprintf(stderr, "%s: %d: %s: not found\n", name, count, bufferEntry);
 }
 
 /**
