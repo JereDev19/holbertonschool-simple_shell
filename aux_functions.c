@@ -5,13 +5,19 @@
  */
 void print_env(void)
 {
-	int i;
+	int i = 0;
+	char **environ_copy = NULL;
+	
+	environ_copy = environ;
 
-	if (!environ)
+	if (!environ_copy || !environ)
 		return;
 
-	for (i = 0; environ[i]; i++)
-		printf("%s\n", environ[i]);
+	for (; environ_copy[i]; i++)
+	{
+		puts(environ_copy[i]);
+		putchar('\n');
+	}
 }
 
 char
