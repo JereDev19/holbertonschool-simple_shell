@@ -2,10 +2,7 @@
 
 /**
  * print_env - print enviroment.
- *
- * Exercise 0.
  */
-
 void print_env(void)
 {
 	int i;
@@ -54,20 +51,16 @@ char
 
 /**
  * _getenv - Get a environment variable.
- *
  * @name: name of environment variable.
  * Return: environment variable.
- *
- * Exercise 2..
  */
-
 char *_getenv(const char *name)
 {
-	char *buffer = NULL, *token = NULL, **environ_copy = environ;
-	int i = 0, b = 0, environ_size = 0;
+	char *buffer = NULL, *token = NULL;
+	int i = 0, environ_size = 0;
 
-	for (; environ_copy[b]; b++)
-		environ_size++;
+	for (; environ[environ_size]; environ_size++)
+		;
 
 	buffer = malloc(sizeof(char) * (environ_size + 1));
 	if (!buffer)
@@ -85,6 +78,7 @@ char *_getenv(const char *name)
 			return (token);
 		}
 	}
+	
 	free(buffer);
 	return (NULL);
 }
