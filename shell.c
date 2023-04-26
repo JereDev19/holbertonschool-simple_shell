@@ -27,6 +27,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 		{
 			if (bufferEntry)
 				free(bufferEntry);
+			free(args);
 			exit(status);
 		}
 		args = generate_args(bufferEntry);
@@ -37,7 +38,6 @@ int main(int argc __attribute__((unused)), char *argv[])
 				print_env(), free(args), satty == 1 ? write(1, "$ ", 2) : 0;
 				continue;
 			}
-			/*If is rute absolute, ejecute this, if is only command, goes to the other*/
 			if (stat(args[0], &buffer) == 0)
 				command = args[0], status = forkProcess(command, args);
 			else if (stat(args[0], &buffer) == -1)
@@ -45,11 +45,14 @@ int main(int argc __attribute__((unused)), char *argv[])
 				command = get_path(args[0]);
 				if (command)
 				{
-					status = forkProcess(command, args), free(command);
+					status = forkProcess(command, args);
+					free(command);
 					(status == -1) ? status = 2 : 0; /* si forkProcess falla, status es 2 */
 				}
 				else
+				{
 					printErr(count, argv[0], bufferEntry), status = 127;
+				}
 			}
 		}
 		free(args), satty == 1 ? write(1, "$ ", 2) : 0;

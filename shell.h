@@ -14,24 +14,27 @@
 extern char **environ;
 
 /* Function to generate arguments */
-char **generate_args(char *param);
+char **generate_args(char *);
 
 /* Function to print env. */
 void print_env(void);
 
 /* Get a give enviroment variable */
-char *_getenv(const char *name);
+char *_getenv(const char *);
 
 /* Function to work with PATH*/
 char *get_path(char *);
 
 /* Function to print command not founded*/
-void printErr(int count, char *name, char *bufferEntry);
+void printErr(int, char *, char *);
 
 /*To create child proccess and get status of it*/
 int forkProcess(char *, char **);
 
 /*Free a double pointer*/
 void free_array(char **);
+
+/*Search a path and if it not found, search path1*/
+char *find_command_path(char *, char *);
 
 #endif

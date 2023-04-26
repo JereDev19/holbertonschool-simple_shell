@@ -47,3 +47,42 @@ void free_array(char **param)
 		free(param[i]);
 	free(param);
 }
+
+char *find_command_path(char *env_path, char *command)
+{
+	char *path_copy = NULL, *path_token = NULL, *file_path_buffer = NULL;
+	int command_len = 0, dir_len = 0;
+	struct stat buffer;
+
+	path_copy = strdup(env_path);
+	command_len = strlen(command);
+	path_token = strtok(path_copy, ":");
+
+	while (path_token)
+	{
+		dir_len = strlen(path_token);
+		file_path_buffer = malloc(command_len + dir_len + 2);
+		if (!file_path_buffer)
+		{
+			free(path_copy);
+			return (NULL);
+		}
+		strcpy(file_path_buffer, path_token);
+		strcat(file_path_buffer, "/");
+		strcat(file_path_buffer, command);
+		strcat(file_path_buffer, "\0");
+
+		if (stat(file_path_buffer, &buffer) == 0)
+		{
+			free(path_copy);
+			return (file_path_buffer);
+		}
+		else
+		{
+			free(file_path_buffer);
+			path_token = strtok(NULL, ":");
+		}
+	}
+	free(path_copy);
+	return (NULL);
+}
