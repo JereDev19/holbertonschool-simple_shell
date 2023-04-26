@@ -23,13 +23,13 @@ int main(int argc __attribute__((unused)), char *argv[])
 			satty == 1 ? write(1, "$ ", 2) : 0;
 			continue;
 		}
-		else if (strcmp(bufferEntry, "exit\n") == 0)
+		args = generate_args(bufferEntry);
+		if (strcmp(args[0], "exit") == 0)
 		{
-			if (bufferEntry)
-				free(bufferEntry);
+			if (bufferEntry && args[0])
+				free(args[0]), free(args);
 			exit(status);
 		}
-		args = generate_args(bufferEntry);
 		if (strcmp(args[0], "env") == 0)
 			print_env();
 		if (args && args[0])
