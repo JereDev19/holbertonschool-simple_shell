@@ -32,9 +32,8 @@ int main(int argc __attribute__((unused)), char *argv[])
 		}
 		if (strcmp(args[0], "env") == 0)
 		{
-			print_env();
 			status = 0;
-			free(args[0]);
+			print_env();
 			exit(status);
 		}
 		if (args && args[0])
