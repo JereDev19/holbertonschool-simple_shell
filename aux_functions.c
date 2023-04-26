@@ -3,7 +3,7 @@
 /**
  * print_env - print enviroment.
  */
-void print_env(char *param)
+void print_env(void)
 {
 	int i = 0;
 
