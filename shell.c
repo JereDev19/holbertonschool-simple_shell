@@ -31,7 +31,11 @@ int main(int argc __attribute__((unused)), char *argv[])
 			exit(status);
 		}
 		if (strcmp(args[0], "env") == 0)
+		{
 			print_env();
+			status = 0;
+			return (status);
+		}
 		if (args && args[0])
 		{
 			/*If is rute absolute, ejecute this, if is only command, goes to the other*/
