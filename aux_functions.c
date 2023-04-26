@@ -3,21 +3,15 @@
 /**
  * print_env - print enviroment.
  */
-void print_env(void)
+void print_env(char *param)
 {
 	int i = 0;
-	char **environ_copy = NULL;
-	
-	environ_copy = environ;
 
-	if (!environ_copy || !environ)
+	if (!environ)
 		return;
-
-	for (; environ_copy[i]; i++)
-	{
-		puts(environ_copy[i]);
-		putchar('\n');
-	}
+	
+	for (; environ[i]; i++)
+		puts(environ[i]);
 }
 
 char
