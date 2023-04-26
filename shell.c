@@ -30,7 +30,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 			exit(status);
 		}
 		args = generate_args(bufferEntry);
-		if (strcmp(args[0], "env\n") == 0)
+		if (strcmp(args[0], "env") == 0)
 			print_env();
 		if (args && args[0])
 		{
