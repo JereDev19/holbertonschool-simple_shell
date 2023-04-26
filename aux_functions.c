@@ -5,13 +5,13 @@
  */
 void print_env(void)
 {
-    int i = 0;
+	int i;
 
-    if (!environ)
-        return;
-
-    for (; environ[i]; i++)
-        printf("%s\n", environ[i]);
+	for (i = 0; environ && environ[i]; i++)
+	{
+		_puts(environ[i]);
+		_putchar('\n');
+	}
 }
 
 
