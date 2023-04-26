@@ -11,7 +11,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 {
 	size_t sizeBuffer = 0;
 	char *command = NULL, *bufferEntry = NULL, **args = NULL;
-	int status = 0, satty = isatty(STDOUT_FILENO), count = 0;
+	int status = 0, satty = isatty(STDIN_FILENO), count = 0;
 	struct stat buffer;
 
 	satty == 1 ? write(1, "$ ", 2) : 0;
@@ -27,14 +27,16 @@ int main(int argc __attribute__((unused)), char *argv[])
 		{
 			if (bufferEntry)
 				free(bufferEntry);
-			status = 2;
 			exit(status);
 		}
-		if (strcmp(bufferEntry, "env\n") == 0)
-			print_env();
 		args = generate_args(bufferEntry);
 		if (args && args[0])
 		{
+			if (strcmp(args[0], "env") == 0)
+			{
+				print_env(), free(args), satty == 1 ? write(1, "$ ", 2) : 0;
+				continue;
+			}
 			/*If is rute absolute, ejecute this, if is only command, goes to the other*/
 			if (stat(args[0], &buffer) == 0)
 				command = args[0], status = forkProcess(command, args);
