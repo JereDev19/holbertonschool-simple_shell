@@ -78,7 +78,7 @@ char *_getenv(const char *name)
 			return (token);
 		}
 	}
-	
+
 	free(buffer);
 	return (NULL);
 }

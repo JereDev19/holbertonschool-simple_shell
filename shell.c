@@ -24,7 +24,11 @@ int main(int argc __attribute__((unused)), char *argv[])
 			continue;
 		}
 		else if (strstr(bufferEntry, "exit"))
-			((bufferEntry) ? free(bufferEntry) : exit(status));
+		{
+			if (bufferEntry)
+				free(bufferEntry);
+			exit(status);
+		}
 		if (strcmp(bufferEntry, "env\n") == 0)
 			print_env();
 		args = generate_args(bufferEntry);
