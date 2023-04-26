@@ -74,12 +74,13 @@ char *_getenv(const char *name)
 		buffer = strtok(buffer, "=");
 		if (strcmp(buffer, name) == 0)
 		{
-			token = strdup(strtok(NULL, "="));
+			token = strtok(NULL, "=");
+			if (token && token[0] != '\0')
+				token = strdup(token);
 			free(buffer);
 			return (token);
 		}
 	}
-
 	free(buffer);
 	return (NULL);
 }

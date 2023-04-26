@@ -43,7 +43,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 			else if (stat(args[0], &buffer) == -1)
 			{
 				command = get_path(args[0]);
-				if (command && command[0])
+				if (command)
 				{
 					status = forkProcess(command, args), free(command);
 					(status == -1) ? status = 2 : 0; /* si forkProcess falla, status es 2 */
