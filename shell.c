@@ -34,7 +34,8 @@ int main(int argc __attribute__((unused)), char *argv[])
 		{
 			print_env();
 			status = 0;
-			return (status);
+			free(args[0]);
+			exit(status);
 		}
 		if (args && args[0])
 		{
