@@ -24,7 +24,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 			continue;
 		}
 		args = generate_args(bufferEntry);
-		if (strstr(args[0], "exit"))
+		if (strcmp(args[0], "exit") == 0)
 		{
 			if (args[0])
 				free(args[0]);
