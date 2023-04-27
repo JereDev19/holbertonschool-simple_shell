@@ -1,13 +1,9 @@
-<h1 align="center">holbertonschool-simple_shell. </h1>
+<h1 align="center">Simple shell - Project at Holberton School</h1>
 <br>
 
 <h2 align="center">Introduction</h2>
 
 <p align="center">This is a very important project at Holberton School that consist of making our own shell with a limited amount of functions and a perfect memory management.</p>
-
-<p align="center">
-<a href="https://github.com/JereDev19/holbertonschool-simple_shell"><strong>Explore the docs »</strong></a>
-</p>
 
 <br></br>
 
@@ -204,6 +200,10 @@ PID TTY          TIME CMD
 If you want to see more commands, we invite you to try the executable !. :)
 ```
 <br>
+
+<p align="center">
+<a href="https://github.com/JereDev19/holbertonschool-simple_shell"><strong>Explore the docs »</strong></a>
+</p>
 
 ## Authors
 
