@@ -14,7 +14,7 @@
 <h2 align="center">Functions and system calls used in this project:</h2>
 <br>
 
-<div align="center">
+<p align="center">
 - All functions from strings.h
 - access.
 - chdir.
@@ -52,7 +52,7 @@
 - wait3
 - wait4
 - write
-</div>
+</p>
 
 <br></br>
 
@@ -210,6 +210,6 @@ If you want to see more commands, we invite you to try the executable !. :)
 <br></br>
 
 <div align="center">
-* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JereDev19/) - *Software development and team leadership.*
-* **Gabriel Acosta** - *Holberton Student* - [Gabriel Acosta](https://github.com/GabiAcosta) - *Software Developer.*
+**Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JereDev19/) - *Software development and team leadership.*
+**Gabriel Acosta** - *Holberton Student* - [Gabriel Acosta](https://github.com/GabiAcosta) - *Software Developer.*
 </div>
