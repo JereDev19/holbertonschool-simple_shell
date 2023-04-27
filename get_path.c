@@ -6,18 +6,18 @@
  */
 char *get_path(char *command)
 {
-	char *path, *path_copy, *path_token, *file_path;
+	char *path, *path_copy, *path_token, *file_path, *env_path1 = _getenv("PATH1"), *env_path = _getenv("PATH");
 	int command_len, dir_len;
 	struct stat buffer;
 
-	if (_getenv("PATH1"))
-		path = _getenv("PATH1");
+	if (env_path1 != NULL && strlen(env_path1) > 0)
+		path = env_path1;
+	else if (env_path != NULL && strlen(env_path) > 0)
+		path = env_path;
 	else
-		path = _getenv("PATH");
-	
-	if (!path)
-		return (NULL);
-	else if (path)
+		path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
+		
+	if (path)
 	{
 		path_copy = strdup(path);
 		command_len = strlen(command);
