@@ -11,9 +11,10 @@
 
 <br></br>
 
-## Functions and system calls used in this project:
+<h2 align="center">Functions and system calls used in this project:</h2>
 <br>
 
+<div align="center">
 - All functions from strings.h
 - access.
 - chdir.
@@ -51,6 +52,7 @@
 - wait3
 - wait4
 - write
+</div>
 
 <br></br>
 
