@@ -57,24 +57,64 @@ When a user enters a command into the shell, the shell parses it and breaks it i
 <br></br>
 
 ## List of built-ins
-
 <br>
+
+
+cd
+<br>
+- Changes the current working directory.
+
+echo
+<br>
+- Displays a message on the screen.
 
 exit
 <br>
 - Exist the shell
-env
+
+export
 <br>
-- Prints the current environment (variable environ).
-unusetenv
+- Sets a environment variable.
+
+history
 <br>
-- Remove an environment variable
-setenv
+- Displays the shell command history.
+
+kill
 <br>
-- Initialize a new environment variable.
-cd
+- Sends a signal to a running process.
+
+pwd
 <br>
-- Change the currenty directory.
+- Displays the current working directory.
+
+read
+<br>
+- Reads a line of user input and stores it in a variable.
+
+source
+<br>
+- Executes a script in the current shell context.
+
+alias
+<br>
+Creates an alias for a command.
+
+unalias
+<br>
+Removes a previously created alias.
+
+set
+<br>
+Displays or sets shell options.
+
+unset
+<br>
+Deletes an environment variable or a user-defined function.
+
+type
+<br>
+Displays informaton about a command.
 
 <br></br>
 <br></br>
