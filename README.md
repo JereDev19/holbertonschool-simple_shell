@@ -61,14 +61,19 @@ When a user enters a command into the shell, the shell parses it and breaks it i
 <br>
 
 exit
+<br>
 - Exist the shell
 env
+<br>
 - Prints the current environment (variable environ).
 unusetenv
+<br>
 - Remove an environment variable
 setenv
+<br>
 - Initialize a new environment variable.
 cd
+<br>
 - Change the currenty directory.
 
 <br></br>
@@ -77,7 +82,7 @@ cd
 <div align="center">
 
 ## Commands
-<br></br>
+<br>
 
 | Command | Description |
 | --- | --- |
