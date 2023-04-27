@@ -1,7 +1,7 @@
 <h1 align="center">Simple shell - Project at Holberton School</h1>
 <br>
 
-<h2>Introduction</h2>
+<h2>Introduction:</h2>
 
 <p>This is a very important project at Holberton School that consist of making our own shell with a limited amount of functions and a perfect memory management.</p>
 
@@ -16,43 +16,43 @@ When a user enters a command into the shell, the shell parses it and breaks it i
 <h2>List of allowed functions and system calls:</h2>
 <br>
 
-- All functions from strings.h
-- access.
-- chdir.
-- close
-- closedir
-- execve
-- exit
-- _exit 
-- fflush
-- fork
-- free
-- getcwd
-- getline
-- getpid
-- isatty
-- kill
-- malloc
-- open
-- opendir
-- perror 
-- printf 
-- fprintf
-- vfprintf
-- sprintf
-- putchar
-- read
-- readdir
-- signal
-- stat
-- lstat
-- fstat
-- strtok
-- wait
-- waitpid
-- wait3
-- wait4
-- write
+| Function | Description | `man` Command |
+| --- | --- | --- |
+| `access` | Checks file access permissions. | `man 2 access` |
+| `chdir` | Changes the current working directory. | `man 2 chdir` |
+| `close` | Closes a file descriptor. | `man 2 close` |
+| `closedir` | Closes a directory stream. | `man 3 closedir` |
+| `execve` | Executes a program. | `man 2 execve` |
+| `exit` | Terminates the calling process. | `man 3 exit` |
+| `_exit` | Terminates the calling process. | `man 2 _exit` |
+| `fflush` | Flushes a stream. | `man 3 fflush` |
+| `fork` | Creates a new process by duplicating the calling process. | `man 2 fork` |
+| `free` | Deallocates memory previously allocated by `malloc`, `calloc`, or `realloc`. | `man 3 free` |
+| `getcwd` | Gets the current working directory. | `man 3 getcwd` |
+| `getline` | Reads an entire line of input from a stream. | `man 3 getline` |
+| `getpid` | Gets the process ID of the calling process. | `man 2 getpid` |
+| `isatty` | Tests whether a file descriptor refers to a terminal. | `man 3 isatty` |
+| `kill` | Sends a signal to a process. | `man 2 kill` |
+| `malloc` | Allocates memory. | `man 3 malloc` |
+| `open` | Opens a file. | `man 2 open` |
+| `opendir` | Opens a directory stream. | `man 3 opendir` |
+| `perror` | Prints a system error message to standard error. | `man 3 perror` |
+| `printf` | Prints formatted output to standard output. | `man 3 printf` |
+| `fprintf` | Prints formatted output to a stream. | `man 3 fprintf` |
+| `vfprintf` | Prints formatted output to a stream, using a variable argument list. | `man 3 vfprintf` |
+| `sprintf` | Prints formatted output to a string. | `man 3 sprintf` |
+| `putchar` | Writes a character to standard output. | `man 3 putchar` |
+| `read` | Reads data from a file descriptor. | `man 2 read` |
+| `readdir` | Reads a directory. | `man 3 readdir` |
+| `signal` | Installs a signal handler. | `man 2 signal` |
+| `stat` | Gets file status. | `man 2 stat` |
+| `lstat` | Gets file status, ignoring symbolic links. | `man 2 lstat` |
+| `fstat` | Gets file status from a file descriptor. | `man 2 fstat` |
+| `strtok` | Breaks a string into tokens. | `man 3 strtok` |
+| `wait` | Waits for a child process to terminate. | `man 2 wait` |
+| `waitpid` | Waits for a specific child process to terminate. | `man 2 waitpid` |
+| `wait3` | Waits for a child process to terminate and returns resource usage information. | `man 2 wait3` |
+| `wait4` | Waits for a specific child process to.
 
 <br></br>
 
@@ -62,23 +62,14 @@ When a user enters a command into the shell, the shell parses it and breaks it i
 
 exit
 - Exist the shell
-<hr>
-
 env
 - Prints the current environment (variable environ).
-<hr>
-
 unusetenv
 - Remove an environment variable
-<hr>
-
 setenv
 - Initialize a new environment variable.
-<hr> 
-
 cd
 - Change the currenty directory.
-<hr>
 
 <br></br>
 <br></br>
