@@ -17,75 +17,40 @@
 - All functions from strings.h
 - access.
 - chdir.
-<br>
 - close
-<br>
 - closedir
-<br>
 - execve
-<br>
 - exit
-<br>
 - _exit 
-<br>
 - fflush
-<br>
 - fork
-<br>
 - free
-<br>
 - getcwd
-<br>
 - getline
-<br>
 - getpid
-<br>
 - isatty
-<br>
 - kill
-<br>
 - malloc
-<br>
 - open
-<br>
 - opendir
-<br>
 - perror 
-<br>
 - printf 
-<br>
 - fprintf
-<br>
 - vfprintf
-<br>
 - sprintf
-<br>
 - putchar
-<br>
 - read
-<br>
 - readdir
-<br>
 - signal
-<br>
 - stat
-<br>
 - lstat
-<br>
 - fstat
-<br>
 - strtok
-<br>
 - wait
-<br>
 - waitpid
-<br>
 - wait3
-<br>
 - wait4
-<br>
 - write
-<br>
 
 <br></br>
 
@@ -240,6 +205,9 @@ PID TTY          TIME CMD
 ```
 If you want to see more commands, we invite you to try the executable !. :)
 ```
+<br></br>
 
+<div align="center">
 * **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JereDev19/) - *Software development and team leadership.*
 * **Gabriel Acosta** - *Holberton Student* - [Gabriel Acosta](https://github.com/GabiAcosta) - *Software Developer.*
+</div>
