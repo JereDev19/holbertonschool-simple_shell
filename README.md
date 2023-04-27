@@ -98,23 +98,23 @@ source
 
 alias
 <br>
-Creates an alias for a command.
+- Creates an alias for a command.
 
 unalias
 <br>
-Removes a previously created alias.
+- Removes a previously created alias.
 
 set
 <br>
-Displays or sets shell options.
+- Displays or sets shell options.
 
 unset
 <br>
-Deletes an environment variable or a user-defined function.
+- Deletes an environment variable or a user-defined function.
 
 type
 <br>
-Displays informaton about a command.
+- Displays informaton about a command.
 
 <br></br>
 <br></br>
