@@ -15,9 +15,7 @@
 <br>
 
 - All functions from strings.h
-<br>
 - access.
-<br>
 - chdir.
 <br>
 - close
@@ -164,7 +162,6 @@ cd holbertonschool-simple_shell
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
-<br></br>
 <br></br>
 ## How to use it
 <br>
