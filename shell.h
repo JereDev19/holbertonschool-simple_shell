@@ -34,7 +34,4 @@ int forkProcess(char *, char **);
 /*Free a double pointer*/
 void free_array(char **);
 
-/*Search a path and if it not found, search path1*/
-char *find_command_path(char *, char *);
-
 #endif
