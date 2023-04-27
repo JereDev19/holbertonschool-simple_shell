@@ -4,17 +4,14 @@
  * @command: given command
  * Return: whole path of the command
  */
+
 char *get_path(char *command)
 {
 	char *path, *path_copy, *path_token, *file_path;
 	int command_len, dir_len;
 	struct stat buffer;
 
-	path = _getenv("PATH1");
-
-	if (strncmp(command, "/", 1) == 0 && path)
-		return (command);
-
+	path = _getenv("PATH");
 	if (path)
 	{
 		path_copy = strdup(path);
