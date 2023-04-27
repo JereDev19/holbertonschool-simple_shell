@@ -14,7 +14,10 @@ char *get_path(char *command)
 		path = _getenv("PATH1");
 	else
 		path = _getenv("PATH");
-	if (path)
+	
+	if (!path)
+		return (NULL);
+	else if (path)
 	{
 		path_copy = strdup(path);
 		command_len = strlen(command);
