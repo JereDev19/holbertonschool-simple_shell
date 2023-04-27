@@ -5,6 +5,10 @@
 
 <p align="center">This is a very important project at Holberton School that consist of making our own shell with a limited amount of functions and a perfect memory management.</p>
 
+<p align="center">
+<a href="https://github.com/JereDev19/holbertonschool-simple_shell"><strong>Explore the docs »</strong></a>
+</p>
+
 <br></br>
 
 ## Functions and system calls used in this project:
@@ -169,7 +173,6 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 prompt$ ./hsh
 ```
 
-<br></br>
 <br></br>
 
 
