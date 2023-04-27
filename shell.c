@@ -38,7 +38,12 @@ int main(int argc __attribute__((unused)), char *argv[])
 				continue;
 			}
 			if (stat(args[0], &buffer) == 0)
-				command = args[0], status = forkProcess(command, args);
+			{
+				if (get_path(args[0]))
+					status = forkProcess(args[0], args);
+				else
+					printErr(count, argv[0], bufferEntry), status = 127;
+			}
 			else if (stat(args[0], &buffer) == -1)
 			{
 				command = get_path(args[0]);
