@@ -84,8 +84,7 @@ cd
 <div align="center">
 
 ## Commands
-
-<br>
+<br></br>
 
 | Command | Description |
 | --- | --- |
@@ -109,7 +108,6 @@ _Note: To access the help documentation for each command, you can use the `man` 
 <br></br>
 
 ## Usage
-<hr>
 <br>
 
 1) - Clone the repository.
@@ -206,7 +204,6 @@ PID TTY          TIME CMD
 If you want to see more commands, we invite you to try the executable !. :)
 ```
 <br>
-</br>
 
 ## Authors
 
