@@ -1,13 +1,19 @@
 <h1 align="center">Simple shell - Project at Holberton School</h1>
 <br>
 
-<h2 align="center">Introduction</h2>
+<h2>Introduction</h2>
 
-<p align="center">This is a very important project at Holberton School that consist of making our own shell with a limited amount of functions and a perfect memory management.</p>
+<p>This is a very important project at Holberton School that consist of making our own shell with a limited amount of functions and a perfect memory management.</p>
+
+<br>
+
+<h2> How to shell works: </h2>
+<p> A shell is a computer program that provides a command-line interface (CLI) for interacting with an operating system. The shell takes user input, processes it and executes it on the operating system.
+When a user enters a command into the shell, the shell parses it and breaks it into different parts. The shell then searches the user-defined and default search paths to find the program that matches the entered command. Once found, the shell loads the program into memory and provides it with the arguments entered by the user. </p>
 
 <br></br>
 
-<h2 align="center">Functions and system calls used in this project:</h2>
+<h2>List of allowed functions and system calls:</h2>
 <br>
 
 - All functions from strings.h
@@ -96,6 +102,7 @@ cd
 | ps | Displays information about running processes. Can be used with options to show detailed information such as process IDs, memory usage, and CPU usage. |
 | kill | Sends a signal to a running process to stop it. Can be used with options to specify the signal to send or to send the signal to a specific process ID. |
 | top | Displays real-time information about the system processes. Shows the processes using the most CPU and memory resources. |
+| cat | Displays real-time information about the system processes. Shows the processes using the most CPU and memory resources. |
 
 _Note: To access the help documentation for each command, you can use the `man` command followed by the command name or use the `--help` option when running the command._
 
