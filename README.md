@@ -2,7 +2,6 @@
 <br>
 
 <h2 align="center">Introduction</h2>
-<hr></hr>
 
 <p align="center">This is a very important project at Holberton School that consist of making our own shell with a limited amount of functions and a perfect memory management.</p>
 
@@ -92,29 +91,24 @@
 
 <br>
 
-- exit
-<br>
-Exist the shell
+exit
+- Exist the shell
 <hr>
 
-- env
-<br>
-Prints the current environment (variable environ).
+env
+- Prints the current environment (variable environ).
 <hr>
 
-- unusetenv
-<br>
-Remove an environment variable
+unusetenv
+- Remove an environment variable
 <hr>
 
-- setenv
-<br>
-Initialize a new environment variable.
+setenv
+- Initialize a new environment variable.
 <hr> 
 
-- cd
-<br>
-Change the currenty directory.
+cd
+- Change the currenty directory.
 <hr>
 
 <br></br>
@@ -123,6 +117,8 @@ Change the currenty directory.
 <div align="center">
 
 ## Commands
+
+<br>
 
 | Command | Description |
 | --- | --- |
@@ -245,3 +241,5 @@ PID TTY          TIME CMD
 If you want to see more commands, we invite you to try the executable !. :)
 ```
 
+* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JereDev19/) - *Software development and team leadership.*
+* **Gabriel Acosta** - *Holberton Student* - [Gabriel Acosta](https://github.com/GabiAcosta) - *Software Developer.*
