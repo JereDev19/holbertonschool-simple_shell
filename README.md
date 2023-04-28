@@ -122,7 +122,6 @@ type
 <div align="center">
 
 ## Commands
-<br>
 
 | Command | Description |
 | --- | --- |
