@@ -36,7 +36,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 				print_env(), free(args), satty == 1 ? write(1, "$ ", 2) : 0;
 				continue;
 			}
-			executeCommand(args, count, bufferEntry, argv);
+			status = executeCommand(args, count, bufferEntry, argv);
 		}
 		free(args), satty == 1 ? write(1, "$ ", 2) : 0;
 	}
