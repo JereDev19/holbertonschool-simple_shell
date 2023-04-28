@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
-* forkProcces - Function that execute a child process.
+* forkProcess - Function that execute a child process.
 * @command: path of param.
 * @arguments: arguments of the command.
 * Return: status of child process.

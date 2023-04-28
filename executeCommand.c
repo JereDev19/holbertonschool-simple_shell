@@ -1,11 +1,12 @@
 #include "shell.h"
 
 /**
-* executeCommand - Execute a command, either an absolute path or a single command 
-* 
+* executeCommand - Execute a command
+* - either an absolute path or a single command and un error message.
+*
 * @args: An array of arrays that contains the arguments.
 * @count: Count of times that the user introduced a command.
-* @bufferentry: Entry of the user.
+* @bufferEntry: Entry of the user.
 * @argv: Name of the program.
 *
 * Return: status.
