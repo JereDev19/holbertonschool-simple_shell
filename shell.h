@@ -37,4 +37,7 @@ void free_array(char **);
 /*Search a path and if it not found, search path1*/
 char *find_command_path(char *, char *);
 
+/**/
+int executeCommand(char **, int , char *, char *[]);
+
 #endif

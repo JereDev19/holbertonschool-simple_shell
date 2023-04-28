@@ -10,9 +10,8 @@
 int main(int argc __attribute__((unused)), char *argv[])
 {
 	size_t sizeBuffer = 0;
-	char *command = NULL, *bufferEntry = NULL, **args = NULL;
+	char *bufferEntry = NULL, **args = NULL;
 	int status = 0, satty = isatty(STDIN_FILENO), count = 0;
-	struct stat buffer;
 
 	satty == 1 ? write(1, "$ ", 2) : 0;
 	while (getline(&bufferEntry, &sizeBuffer, stdin) >= 0)
@@ -37,19 +36,7 @@ int main(int argc __attribute__((unused)), char *argv[])
 				print_env(), free(args), satty == 1 ? write(1, "$ ", 2) : 0;
 				continue;
 			}
-			if (stat(args[0], &buffer) == 0)
-				command = args[0], status = forkProcess(command, args);
-			else if (stat(args[0], &buffer) == -1)
-			{
-				command = get_path(args[0]);
-				if (command)
-				{
-					status = forkProcess(command, args), free(command);
-					(status == -1) ? status = 2 : 0; /* si forkProcess falla, status es 2 */
-				}
-				else
-					printErr(count, argv[0], bufferEntry), status = 127;
-			}
+			executeCommand(args, count, bufferEntry, argv);
 		}
 		free(args), satty == 1 ? write(1, "$ ", 2) : 0;
 	}
