@@ -59,7 +59,6 @@ When a user enters a command into the shell, the shell parses it and breaks it i
 ## List of built-ins
 <br>
 
-
 cd
 <br>
 - Changes the current working directory.
