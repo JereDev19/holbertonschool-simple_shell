@@ -52,7 +52,7 @@ When a user enters a command into the shell, the shell parses it and breaks it i
 | `wait` | Waits for a child process to terminate. | `man 2 wait` |
 | `waitpid` | Waits for a specific child process to terminate. | `man 2 waitpid` |
 | `wait3` | Waits for a child process to terminate and returns resource usage information. | `man 2 wait3` |
-| `wait4` | Waits for a specific child process to.
+| `wait4` | Waits for a specific child process to. | `man 2 wait4` |
 
 <br></br>
 
