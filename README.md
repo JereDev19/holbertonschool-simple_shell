@@ -246,6 +246,10 @@ If you want to see more commands, we invite you to try the executable !. :)
 <a href="https://github.com/JereDev19/holbertonschool-simple_shell"><strong>Explore the docs »</strong></a>
 </p>
 
+<p align="center">
+<a href="https://github.com/JereDev19/holbertonschool-simple_shell/blob/main/Simple%20Shell.drawio.png"><strong>Explore flowchart»</strong></a>
+</p>
+
 ## Authors
 
 * **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JereDev19/) - *Software development and team leadership.*
