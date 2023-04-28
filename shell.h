@@ -35,6 +35,6 @@ int forkProcess(char *, char **);
 void free_array(char **);
 
 /*Function that execute a command gived*/
-int executeCommand(char **, int , char *, char *[]);
+int executeCommand(char **, int, char *, char *[]);
 
 #endif
