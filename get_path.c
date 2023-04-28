@@ -21,7 +21,7 @@ char *get_path(char *command)
 		while (path_token != NULL)
 		{
 			dir_len = strlen(path_token);
-			file_path = malloc(command_len + dir_len + 2);
+			file_path = malloc(command_len + dir_len + 1);
 			if (!file_path)
 			{
 				free(path_copy), free(path);
@@ -30,7 +30,6 @@ char *get_path(char *command)
 			strcpy(file_path, path_token);
 			strcat(file_path, "/");
 			strcat(file_path, command);
-			strcat(file_path, "\0");
 			if (stat(file_path, &buffer) == 0)
 			{
 				free(path_copy), free(path);
@@ -40,11 +39,6 @@ char *get_path(char *command)
 				free(file_path), path_token = strtok(NULL, ":");
 		}
 		free(path_copy), free(path);
-		return (NULL);
-	}
-	else if (path)
-	{
-		return (NULL);
 	}
 	return (NULL);
 }
