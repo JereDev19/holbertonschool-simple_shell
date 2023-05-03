@@ -252,5 +252,5 @@ If you want to see more commands, we invite you to try the executable !. :)
 
 ## Authors
 
-* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JereDev19/) - *Software development and team leadership.*
+* **Jeremias Erba** - *Holberton Student* - [Jeremias Erba](https://github.com/JeremiasInCode/) - *Software development and team leadership.*
 * **Gabriel Acosta** - *Holberton Student* - [Gabriel Acosta](https://github.com/GabiAcosta) - *Software Developer.*
